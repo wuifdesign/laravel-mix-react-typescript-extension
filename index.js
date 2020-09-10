@@ -1,4 +1,6 @@
-let mix = require("laravel-mix");
+let mix = require('laravel-mix');
+const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
+const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 class ReactTypeScript {
   constructor() {
@@ -7,11 +9,11 @@ class ReactTypeScript {
 
   dependencies() {
     return [
-      "@babel/preset-typescript",
-      "@babel/preset-react",
-      "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-proposal-object-rest-spread",
-      "typescript"
+      '@babel/preset-typescript',
+      '@babel/preset-react',
+      '@babel/plugin-proposal-class-properties',
+      '@babel/plugin-proposal-object-rest-spread',
+      'typescript',
     ];
   }
 
@@ -27,9 +29,21 @@ class ReactTypeScript {
       entry.addFromOutput(
         js.entry.map(file => file.path()),
         js.output,
-        js.entry[0]
+        js.entry[0],
       );
     });
+  }
+
+  webpackPlugins() {
+    return [
+      new ForkTsCheckerWebpackPlugin({
+        async: false,
+        useTypescriptIncrementalApi: true,
+        checkSyntacticErrors: true,
+        silent: true,
+        formatter: typescriptFormatter,
+      }),
+    ];
   }
 
   webpackRules() {
@@ -39,27 +53,30 @@ class ReactTypeScript {
         exclude: /(node_modules)/,
         use: [
           {
-            loader: "babel-loader",
-            options: Config.babel()
-          }
-        ]
-      }
+            loader: 'babel-loader',
+            options: Config.babel(),
+          },
+        ],
+      },
     ];
   }
 
   webpackConfig(webpackConfig) {
-    webpackConfig.resolve.extensions.push(".ts", ".tsx");
+    webpackConfig.resolve.extensions.push('.ts', '.tsx');
   }
 
   babelConfig() {
     return {
-      presets: ["@babel/preset-typescript", "@babel/preset-react"],
+      presets: [
+        '@babel/preset-typescript',
+        '@babel/preset-react',
+      ],
       plugins: [
-        "@babel/proposal-class-properties",
-        "@babel/proposal-object-rest-spread"
-      ]
+        '@babel/proposal-class-properties',
+        '@babel/proposal-object-rest-spread',
+      ],
     };
   }
 }
 
-mix.extend("reactTypeScript", new ReactTypeScript());
+mix.extend('reactTypeScript', new ReactTypeScript());

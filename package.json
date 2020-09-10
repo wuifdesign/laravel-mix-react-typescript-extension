@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/raicem/laravel-mix-react-typescript-extension.git"
+    "url": "git+https://github.com/wuifdesign/laravel-mix-react-typescript-extension.git"
   },
   "keywords": [
     "laravel",
@@ -14,12 +14,10 @@
     "typescript",
     "react"
   ],
-  "author": "Cem Ünalan",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/raicem/laravel-mix-react-typescript-extension/issues"
+  "dependencies": {
+    "react-dev-utils": "^10.2.1"
   },
-  "homepage": "https://github.com/raicem/laravel-mix-react-typescript-extension#readme",
   "peerDependencies": {
     "laravel-mix": "^4.0.0"
   }

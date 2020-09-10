@@ -10,16 +10,16 @@ To see TypeScript errors you should manually check using the `tsc` command. `tsc
 
 ## Installation
 
-`npm install laravel-mix-react-typescript-extension`
+`npm install wuifdesign/laravel-mix-react-typescript-extension`
 
 ## Usage
 
 ```js
-let mix = require("laravel-mix");
+let mix = require('laravel-mix');
 
-require("laravel-mix-react-typescript-extension");
+require('laravel-mix-react-typescript-extension');
 
 mix
-  .reactTypeScript("resources/js/app.ts", "public/js")
-  .sass("resources/sass/app.scss", "public/css");
+  .reactTypeScript('resources/js/app.ts', 'public/js')
+  .sass('resources/sass/app.scss', 'public/css');
 ```
